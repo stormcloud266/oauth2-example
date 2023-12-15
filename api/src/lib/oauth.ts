@@ -65,3 +65,24 @@ export const createAuthUrl = (clientId: string, stateToken: string) => {
 
   return url.toString()
 }
+
+export const createTokenExchangeParams = ({
+  clientId,
+  clientSecret,
+  redirectUri,
+  code,
+}: {
+  clientId: string
+  clientSecret: string
+  redirectUri: string
+  code: string
+}) => {
+  const params = new URLSearchParams({
+    client_id: clientId,
+    client_secret: clientSecret,
+    grant_type: 'authorization_code',
+    redirect_uri: redirectUri,
+    code,
+  })
+  return params
+}
